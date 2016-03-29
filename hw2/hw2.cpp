@@ -59,14 +59,16 @@ int main() {
             it2->second.emplace(*u_t, a[2]);
         }
         count++;
-        if (count % 1000000 == 0)
+        if (count % 10000000 == 0)
             cerr << count << endl;
     }
     in_file.close();
-    
+    cerr << "data base have benn constructed\n";
+
     int query_number;
     cin >> query_number;
     cin.get();
+    int accu_query = 0;
     while (query_number--) {
         string query_type, query_parameter;
         queue<int> query_parameter_queue;
@@ -146,38 +148,6 @@ int main() {
             int* count_user = new int[2500000];
             fill(count_user, count_user + 2500000, 0);
             vector<int> valid_user;
-            /*for (auto it = data_base.begin(); it != data_base.end(); it++) {
-                bool item1_valid = false, item2_valid = false;
-                for (auto itt = it->second.begin(); itt != it->second.end(); itt++) {
-                    if (itt->first == item1) {
-                        for (auto ittt = itt->second.begin(); ittt != itt->second.end(); ittt++) {
-                            if (ittt->first >= time1 && ittt->first <= time2) {
-                                item1_valid = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (itt->first == item2) {
-                        for (auto ittt = itt->second.begin(); ittt != itt->second.end(); ittt++) {
-                            if (ittt->first >= time1 && ittt->first <= time2) {
-                                item2_valid = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (item1_valid &&item2_valid) break;
-                }
-                if (item1_valid && item2_valid)
-                    valid_user.push_back(it->first);
-            }
-            if (valid_user.empty()) {
-                cout << "EMPTY" << endl;
-            } else {
-                sort(valid_user.begin(), valid_user.end());
-                for (auto it = valid_user.begin(); it != valid_user.end(); it++) {
-                    cout << *it << endl;
-                }
-            }*/ 
             auto it1 = data_base2.find(item1);
             if (it1 != data_base2.end()) {
                 for (auto itt1 = it1->second.begin(); itt1 != it1->second.end(); itt1++) {
@@ -251,6 +221,9 @@ int main() {
             }
         } else {
             cout << "undefined query type\n";
-        }       
+        }
+        accu_query++;
+        if (accu_query == 2000)
+            break;       
     }
 }
