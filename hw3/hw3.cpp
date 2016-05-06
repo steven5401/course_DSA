@@ -431,7 +431,7 @@ int main() {
         //cerr << endl;
         fist_last_x(nonogram, length_array, m, n);
     }
-    dfs(nonogram, length_array, m, n, 0);
+    //dfs(nonogram, length_array, m, n, 0);
     //nonogram display
     display(nonogram, m , n);
     fill(row_column_error, row_column_error + m + n, 0);

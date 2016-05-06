@@ -4,28 +4,7 @@
 using namespace std;
 map<vector<int>, int> ans;
 void permutation(int now, int max, int push, vector<int> stack, vector<int> out) {
-    //cerr << "fff" << now << "," << push << endl;
-    for (auto it = stack.begin(); it != stack.end(); it++) {
-        //cerr << "stack" << *it << endl;
-    }
-    /*if (now == max) {
-        /*if (push)
-            out.push_back(now);
-        while (!stack.empty()) {
-            int a = stack.back();
-            //cerr << 'a' << a << endl;
-            out.push_back(a);
-            stack.pop_back();
-        }
-        if (!push)
-            out.push_back(now);
-        for (auto it = out.begin(); it != out.end(); it++) {
-            cout << *it << " ";
-        }
-        cout << endl;
-        ans.emplace(out, 1);
-        return;
-    }*/
+    
     while (push != 0) {
         out.push_back(stack.back());
         stack.pop_back();
