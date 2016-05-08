@@ -195,12 +195,8 @@ int main () {
     buy.push_back(dummy);
     sell.push_back(dummy);
     int transcation_time = 0;
-    while (getline(cin, line)) {
-        istringstream iss(line);
-        unsigned bidId, clientId, action, price, shareCount;
-        while (iss) {
-            iss >> bidId >> clientId >> action >> price >> shareCount;
-        }
+    unsigned bidId, clientId, action, price, shareCount;
+    while (scanf("%u\t%u\t%u\t%u\t%u", &bidId, &clientId, &action, &price, &shareCount) == 5) {        
         if (action == 0) {
             if (sell.size() > 1) {
                 while (price >= sell[1]->_price && shareCount != 0) {
