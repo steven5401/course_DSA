@@ -9,21 +9,21 @@
 #include <set>
 using namespace std;
 typedef unordered_set<string> string_map;
-//string candidate = "abcdefghijklmnopqrstuvwxyz";
+string candidate = "abcdefghijklmnopqrstuvwxyz";
 
 inline void ed(string s, string_map sm, set<string>& cw, int level) {
     int size = s.size();
     for (int i = 0; i != size; i++) {//substitute
-        for (char j = 'a'; j <= 'z'; j++) {
+        for (int j = 0; j != 26; j++) {
             string temp = s;
-            temp.replace(i, 1, &j, 1);
+            temp.replace(i, 1, candidate.substr(j, 1));
             if (sm.count(temp)) cw.insert(temp);
             if (level != 1) {//ed(temp, sm, cw, level - 1);
                 int size2 = temp.size();
                 for (int i = 0; i != size2; i++) {//substitute
-                    for (char j = 'a'; j <= 'z'; j++) {
+                    for (int j = 0; j != 26; j++) {
                         string temp2 = temp;
-                        temp2.replace(i, 1, &j, 1);
+                        temp2.replace(i, 1, candidate.substr(j, 1));
                         if (sm.count(temp2)) cw.insert(temp2);
                     }
                 }
@@ -33,9 +33,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
                 for (int i = 0; i <= size2; i++) {//insert
-                    for (char j = 'a'; j <= 'z'; j++) {
+                    for (int j = 0; j != 26; j++) {
                         string temp2 = temp;           
-                        temp2.insert(temp2.begin() + i, j);
+                        temp2.insert(i, candidate.substr(j, 1));
                         if (sm.count(temp2)) cw.insert(temp2);
                     }
                 }
@@ -57,9 +57,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
         if (level != 1) {//ed(temp, sm, cw, level - 1);
             int size2 = temp.size();
             for (int i = 0; i != size2; i++) {//substitute
-                for (char j = 'a'; j <= 'z'; j++) {
+                for (int j = 0; j != 26; j++) {
                     string temp2 = temp;
-                    temp2.replace(i, 1, &j, 1);
+                    temp2.replace(i, 1, candidate.substr(j, 1));
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
             }
@@ -69,9 +69,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
                 if (sm.count(temp2)) cw.insert(temp2);
             }
             for (int i = 0; i <= size2; i++) {//insert
-                for (int j = 'a'; j <= 'z'; j++) {
-                    string temp2 = temp;           
-                    temp2.insert(temp2.begin() + i, j);
+                for (int j = 0; j != 26; j++) {
+                    string temp2 = temp;
+                    temp2.insert(i, candidate.substr(j, 1));
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
             }
@@ -86,16 +86,16 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
         }
     }
     for (int i = 0; i <= size; i++) {//insert
-        for (char j = 'a'; j <= 'z'; j++) {
+        for (int j = 0; j != 26; j++) {
             string temp = s;           
-            temp.insert(temp.begin() + i, j);
+            temp.insert(i, candidate.substr(j, 1));
             if (sm.count(temp)) cw.insert(temp);
             if (level != 1) {//ed(temp, sm, cw, level - 1);
                 int size2 = temp.size();
                 for (int i = 0; i != size2; i++) {//substitute
-                    for (char j = 'a'; j <= 'z'; j++) {
+                    for (int j = 0; j != 26; j++) {
                         string temp2 = temp;
-                        temp2.replace(i, 1, &j, 1);
+                        temp2.replace(i, 1, candidate.substr(j, 1));
                         if (sm.count(temp2)) cw.insert(temp2);
                     }
                 }
@@ -105,9 +105,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
                 for (int i = 0; i <= size2; i++) {//insert
-                    for (char j = 'a'; j <= 'z'; j++) {
+                    for (int j = 0; j != 26; j++) {
                         string temp2 = temp;           
-                        temp2.insert(temp2.begin() + i, j);
+                        temp2.insert(i, candidate.substr(j, 1));
                         if (sm.count(temp2)) cw.insert(temp2);
                     }
                 }
@@ -132,9 +132,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
         if (level != 1) {//ed(temp, sm, cw, level - 1);
             int size2 = temp.size();
             for (int i = 0; i != size2; i++) {//substitute
-                for (char j = 'a'; j <= 'z'; j++) {
+                for (int j = 0; j != 26; j++) {
                     string temp2 = temp;
-                    temp2.replace(i, 1, &j, 1);
+                    temp2.replace(i, 1, candidate.substr(j, 1));
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
             }
@@ -144,9 +144,9 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
                 if (sm.count(temp2)) cw.insert(temp2);
             }
             for (int i = 0; i <= size2; i++) {//insert
-                for (char j = 'a'; j <= 'z'; j++) {
+                for (int j = 0; j != 26; j++) {
                     string temp2 = temp;           
-                    temp2.insert(temp2.begin() + i, j);
+                    temp2.insert(i, candidate.substr(j, 1));
                     if (sm.count(temp2)) cw.insert(temp2);
                 }
             }
@@ -160,6 +160,7 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
             }
         }
     }
+   
 }
 
 int main() {
@@ -167,7 +168,7 @@ int main() {
     inFile.open("./cmudict-0.7b.txt");
     //inFile.open("/tmp2/dsa2016_hw5/cmudict-0.7b");
     string dictionaryWord;
-    char trash[100], line[300], query[300];
+    char inWord[100], trash[100], line[300];
     string_map sm;
     while (true) {
         inFile.getline(line, 300);
@@ -175,17 +176,20 @@ int main() {
         if (inFile.eof()) break;
         dictionaryWord = strtok(line, " ");
         transform(dictionaryWord.begin(), dictionaryWord.end(), dictionaryWord.begin(), ::tolower);
+        //printf("%s\n", dictionaryWord.c_str());
         sm.insert(dictionaryWord);
     }
     inFile.close();
-    //int i = 1;
-    while (fgets(query, 300, stdin)) {
+    //cerr << "start cin\n";
+    //ed("1234", 1);
+    int i = 1;
+    while (scanf("%s\t%s\t%s\t%s", inWord, trash, trash, trash) == 4) {
         //cerr << i << endl;
         //i++;
         set<string> correctWord;
-        string iw = strtok(query, "\t");
-        printf("%s ==>", iw.c_str());
-        if (sm.count(iw)) {
+        string iw = inWord;
+        printf("%s ==>", inWord);
+        if (sm.count(inWord)) {
             printf(" OK\n");
             continue;
         }
