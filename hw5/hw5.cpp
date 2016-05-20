@@ -164,8 +164,8 @@ inline void ed(string s, string_map sm, set<string>& cw, int level) {
 
 int main() {
     ifstream inFile;
-    inFile.open("./cmudict-0.7b.txt");
-    //inFile.open("/tmp2/dsa2016_hw5/cmudict-0.7b");
+    //inFile.open("./cmudict-0.7b.txt");
+    inFile.open("/tmp2/dsa2016_hw5/cmudict-0.7b");
     string dictionaryWord;
     char trash[100], line[300], query[300];
     string_map sm;
