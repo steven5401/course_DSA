@@ -169,6 +169,7 @@ int main() {
     string dictionaryWord;
     char trash[100], line[300], query[300];
     string_map sm;
+    sm.rehash(299087);
     while (true) {
         inFile.getline(line, 300);
         if (line[0] == ';' && line[1] == ';' && line[2] == ';') continue;
