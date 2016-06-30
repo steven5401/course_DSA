@@ -184,7 +184,7 @@ int main() {
         //cerr << i << endl;
         //i++;
         set<string> correctWord;
-        string iw = strtok(query, "\t");
+        string iw = strtok(query, "\n");
         printf("%s ==>", iw.c_str());
         if (sm.count(iw)) {
             printf(" OK\n");
