@@ -105,15 +105,15 @@ void combine(int segment, vector<string>* editSequence, int* prepPosition,
              string* queryArray, string temp, int index, int querySize, int prepSegment) {
     bool flag = false;
     int i = index;
-    /*int lastZero = 0;
+    int lastZero = 0;
     for (int k = 0; k != querySize; k++) {
         if (prepPosition[k] == 0) lastZero = k;
-    }*/
+    }
     for (; i != querySize; i++) {
         if (prepPosition[i] == 0) {
             temp += queryArray[i];
             flag = true;
-            if (i != querySize -1) {
+            if (i != lastZero) {
                 temp += " ";
             } else {
                 if (i == querySize -1) {
@@ -137,7 +137,7 @@ void combine(int segment, vector<string>* editSequence, int* prepPosition,
     if (flag) {
         string ttemp = temp;
         for (auto it = editSequence[segment].begin(); it != editSequence[segment].end(); it++) {
-            if (*it == "" && temp[temp.size() - 1] == ' ') temp.erase(temp.end() - 1);
+            if (*it != "") temp += " ";
             temp += *it;
             if (prepPosition[querySize - 1] == 0) {
                 if (*it != "") temp += " ";
@@ -154,7 +154,7 @@ void combine(int segment, vector<string>* editSequence, int* prepPosition,
                     candidate.push_back(make_pair(it->second, it->first));
                 }
             }
-            if (segment != prepSegment - 1)
+            if (segment != prepSegment - 1 || i < lastZero)
                 combine(segment + 1, editSequence, prepPosition, queryArray, temp, i + 1, querySize, prepSegment);
             temp = ttemp;
         }
