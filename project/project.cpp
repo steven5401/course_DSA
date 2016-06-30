@@ -137,7 +137,7 @@ void combine(int segment, vector<string>* editSequence, int* prepPosition,
     if (flag) {
         string ttemp = temp;
         for (auto it = editSequence[segment].begin(); it != editSequence[segment].end(); it++) {
-            if (*it != "") temp += " ";
+            if (*it != "" && i == lastZero + 1) temp += " ";
             temp += *it;
             if (prepPosition[querySize - 1] == 0) {
                 if (*it != "") temp += " ";
